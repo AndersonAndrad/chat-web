@@ -2,12 +2,10 @@ import styled from 'styled-components';
 
 export const Contanier = styled.div`
   display: flex;
-  justify-content: center;
 `;
 
 export const ChatContainer = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
   width: 100%;
   max-width: 600px;
@@ -22,9 +20,12 @@ export const Title = styled.div`
 `;
 
 export const Messages = styled.div`
-  height: 300px;
+  min-height: 300px;
   background: #1783da;
   width: 100%;
+  li {
+    list-style: none;
+  }
 `;
 
 export const ChatBox = styled.div`

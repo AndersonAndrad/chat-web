@@ -16,14 +16,18 @@ export default function Chat(props) {
           <label>{props.title}</label>
         </Title>
         <Messages>
-          <label>message</label>
+          <label>
+            <ul>
+              {props.messages.map((msg) => (
+                <li key={msg.id}>
+                  <label>
+                    <strong>{msg.user}</strong>: <p>{msg.message}</p>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </label>
         </Messages>
-        <ChatBox>
-          <input type="text" />
-        </ChatBox>
-        <ButtonContainer>
-          <button>Send</button>
-        </ButtonContainer>
       </ChatContainer>
     </Contanier>
   );

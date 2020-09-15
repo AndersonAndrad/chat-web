@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
 import { uuid } from 'uuidv4';
-
-const socket = io.connect('http://localhost:3001');
+import socket from '../../service/socketio/socket.service';
 
 export default function Room1() {
-  const [user, setUser] = useState('');
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]);
 
@@ -30,18 +27,17 @@ export default function Room1() {
     };
 
     renderMessage();
-    console.log(data);
 
     if (message.length) {
       socket.emit('msgToServer', data);
     }
   }
 
-  // useEffect(() => {
-  //   socket.on('previusMessage', (data) => {
-  //     setReceived(data);
-  //   });
-  // }, [received]);
+  useEffect(() => {
+    socket.on('previusMessage', (data) => {
+      setReceived(data);
+    });
+  }, [received]);
 
   return (
     <div>
